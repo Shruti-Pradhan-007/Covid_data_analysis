@@ -1,0 +1,35 @@
+/*
+Covid 19 Data Exploration
+*/
+
+
+-- Dsiplay entire Data from CovidDeaths table for all continents, starting from 2020 in alphabetical order
+
+Select Location
+	, date
+	, total_cases
+	, new_cases
+	, total_deaths
+	, population
+From 
+	Covid_data_analysis..CovidDeaths
+Where 
+	continent IS NOT NULL 
+order by 
+	1, 2;
+
+
+-- What is the count of Total Cases vs Total Deaths in India - will show the likelihood of death percentage in case of contracting the virus
+
+Select Location
+	, date
+	, total_cases
+	, total_deaths
+	, (total_deaths/total_cases)*100 as DeathPercentage
+From 
+	Covid_data_analysis..CovidDeaths
+Where 
+	location LIKE '%India%'
+	and continent IS NOT NULL 
+order by 
+	1,2;
