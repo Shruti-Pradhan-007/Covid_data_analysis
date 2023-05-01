@@ -93,6 +93,20 @@ order by
 	TotalDeathCount desc;
 
 
+-- Display countries with the highest availabilty rate of hospital beds
+
+Select location
+	, MAX(hospital_beds_per_thousand) as HospitalBedAvailability
+From 
+	Covid_data_analysis..CovidVaccinations
+Where 
+	continent IS NOT NULL 
+Group by 
+	location
+order by 
+	HospitalBedAvailability desc;
+	
+
 -- What Percentage of Population has recieved at least one Covid Vaccine?
 
 Select d.continent
@@ -129,5 +143,3 @@ WHERE
 	d.continent IS NOT NULL 
 ORDER BY
 	2 ,3;
-
-
