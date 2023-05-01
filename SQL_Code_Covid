@@ -93,3 +93,41 @@ order by
 	TotalDeathCount desc;
 
 
+-- What Percentage of Population has recieved at least one Covid Vaccine?
+
+Select d.continent
+	, d.location
+	, d.date
+	, d.population
+	, v.new_vaccinations
+	, SUM(CAST(v.new_vaccinations AS int)) OVER (Partition by d.Location Order by d.location, d.Date) as RollingPeopleVaccinated
+FROM 
+	Covid_data_analysis..CovidDeaths d
+	Join Covid_data_analysis..CovidVaccinations v
+	On d.location = v.location
+	and d.date = v.date
+WHERE 
+	d.continent IS NOT NULL 
+ORDER BY
+	2 ,3;
+
+
+-- What Percentage of Population is fully vaccinated?
+
+Select d.continent
+	, d.location
+	, d.date
+	, d.population
+	, v.people_fully_vaccinated
+	, SUM(CAST(v.people_fully_vaccinated AS int)) OVER (Partition by d.Location Order by d.location, d.Date) as RollingPeopleFullyVaccinated
+FROM 
+	Covid_data_analysis..CovidDeaths d
+	Join Covid_data_analysis..CovidVaccinations v
+	On d.location = v.location
+	and d.date = v.date
+WHERE 
+	d.continent IS NOT NULL 
+ORDER BY
+	2 ,3;
+
+
