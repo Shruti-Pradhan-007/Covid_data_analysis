@@ -48,3 +48,19 @@ WHERE
 	and continent IS NOT NULL 
 order by 
 	1,2;
+
+
+-- Display the top 50 countries which had the Highest Infection Rate as compared to its Population?
+
+Select TOP 50 Location
+	, Population
+	, MAX(total_cases) as HighestInfectionCount
+	, MAX(total_cases/population)*100 as PercentPopulationInfected
+From 
+	Covid_data_analysis..CovidDeaths
+Group by 
+	Location
+	, Population
+order by 
+	PercentPopulationInfected desc;
+
