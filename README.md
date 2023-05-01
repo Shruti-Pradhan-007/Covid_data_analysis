@@ -1,6 +1,6 @@
 # SQL_Covid_data_analysis
 
-In this SQL project, I have analyzed the trends observed during the Covid-19 pandemic faced across the world using the CovidDeaths and CovidVaccinations data tables of Covid-19 dataset for time period ranging from March 2020 to June 2021.
+In this SQL project, I have analyzed the trends observed during the Covid-19 pandemic faced across the world using the CovidDeaths and CovidVaccinations data tables of Covid-19 dataset for time period ranging from January 2020 to April 2021.
 
 This exploratory data analysis has showcased skills such as: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Converting data types.
 
